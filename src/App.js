@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Counter from "./pages/Counter";
 import Form from "./pages/Form";
 import NoPage from "./pages/NoPage";
+import AppProvider from "./store/AppProvider";
 const App = () => {
   const [forms, setForm] = useState([]);
   const submitHanderler = (form) => {
@@ -14,17 +15,23 @@ const App = () => {
     setForm(newForm);
     console.log(forms);
   };
+
   return (
-    <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/counter" element={<Counter submitForm={submitHanderler} />}></Route>
-          <Route path="/form" element={<Form />}></Route>
-          <Route path="*" element={<NoPage/>}></Route>
-        </Routes>
-      </Layout>
-    </BrowserRouter>
+    <AppProvider>
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route
+              path="/counter"
+              element={<Counter submitForm={submitHanderler} />}
+            ></Route>
+            <Route path="/form" element={<Form />}></Route>
+            <Route path="*" element={<NoPage />}></Route>
+          </Routes>
+        </Layout>
+      </BrowserRouter>
+    </AppProvider>
   );
 };
 

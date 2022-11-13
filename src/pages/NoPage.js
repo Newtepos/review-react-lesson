@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Fragment, useContext } from "react";
+import AppContext from "../store/app-context";
 
 function NoPage() {
-  return (
-    <div>NoPage</div>
-  )
+  const { user } = useContext(AppContext);
+
+  return <Fragment>{`${user}, You got nothing !`}</Fragment>;
 }
 
-export default NoPage
+export default NoPage;
