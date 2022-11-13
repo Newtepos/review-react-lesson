@@ -1,17 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import classes from "./MainNavigation.module.css"
 
 function MainNavigation() {
   return (
-    <header>
+    <header className={classes.header}>
       <NavLink to="/">Logo</NavLink>
-      <nav>
+      <nav className={classes.nav}>
         <ul>
           <li>
-            <NavLink to="/counter">Counter</NavLink>
+            <NavLink to="/counter" className={({isActive}) => (isActive ? classes.active : "") }>Counter</NavLink>
           </li>
           <li>
-            <NavLink to="/form">Form</NavLink>
+            <NavLink to="/form"  className={({isActive}) => (isActive ? classes.active : "") }>Form</NavLink>
           </li>
         </ul>
       </nav>
